@@ -7,6 +7,7 @@ public class Main {
         boolean endProgram = false;
         String var;
         String var2;
+        Account root1 = new Employee("root1", "111 111 111", "1111", "admin");
         Employee root = new Employee("root", "111 111 111", "1111", "admin");
         Service cutting = new Service(ServiceType.CUTTING, 30, 30);
         Service styling = new Service(ServiceType.STYLING, 40, 60);
@@ -14,6 +15,7 @@ public class Main {
         Service washingAndConditioning = new Service(ServiceType.WASHING_AND_CONDITIONING, 40, 45);
 //Program---------------------------------------------------------------------------------------------------------------
         while (!endProgram){
+            Account.showAccounts();
             System.out.println("Do you want to Sign in or Sign up? (Sign in or Sign up)");
             var = scanner.nextLine();
             if (var.equals("Sign in")){
