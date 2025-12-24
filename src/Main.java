@@ -6,10 +6,26 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean endProgram = false;
         String var;
-//        Customer customer = new Customer("Marian Sobiecki", "21434324329", "20");
-//        Service service = new Service(ServiceType.CUTTING, 50, 30);
-//        Reservation reservation = new Reservation(customer, service, LocalDate.parse("2025-12-18"), PaymentMethod.CASH);
+        String var2;
+        Employee root = new Employee("root", "111 111 111", "1111", "admin");
+        Service cutting = new Service(ServiceType.CUTTING, 30, 30);
+        Service styling = new Service(ServiceType.STYLING, 40, 60);
+        Service coloring = new Service(ServiceType.COLORING, 50, 90);
+        Service washingAndConditioning = new Service(ServiceType.WASHING_AND_CONDITIONING, 40, 45);
+//Program---------------------------------------------------------------------------------------------------------------
         while (!endProgram){
+            System.out.println("Do you want to Sign in or Sign up? (Sign in or Sign up)");
+            var = scanner.nextLine();
+            if (var.equals("Sign in")){
+                System.out.println("Type in your full name");
+                var = scanner.nextLine();
+                System.out.println("Type in your PIN");
+                var2 = scanner.nextLine();
+            } else if (var.equals("Sign up")) {
+
+            } else {
+                System.out.println("Wrong Input!");
+            }
             System.out.println("Do you want to exit? (yes or no)");
             var = scanner.nextLine();
             if (var.equals("yes")){
