@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -6,8 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean endProgram = false;
         String var;
-        String var2;
-        Account root1 = new Employee("root1", "111 111 111", "1111", "admin");
+        List<Account> accounts = Account.getAccounts();
         Employee root = new Employee("root", "111 111 111", "1111", "admin");
         Service cutting = new Service(ServiceType.CUTTING, 30, 30);
         Service styling = new Service(ServiceType.STYLING, 40, 60);
@@ -15,17 +15,45 @@ public class Main {
         Service washingAndConditioning = new Service(ServiceType.WASHING_AND_CONDITIONING, 40, 45);
 //Program---------------------------------------------------------------------------------------------------------------
         while (!endProgram){
-            Account.showAccounts();
             System.out.println("Do you want to Sign in or Sign up? (Sign in or Sign up)");
             var = scanner.nextLine();
-            if (var.equals("Sign in")){
+            if (var.equalsIgnoreCase("Sign in")){
                 System.out.println("Type in your full name");
-                var = scanner.nextLine();
-                System.out.println("Type in your PIN");
-                var2 = scanner.nextLine();
-            } else if (var.equals("Sign up")) {
+                String nameInput = scanner.nextLine();
 
-            } else {
+                System.out.println("Type in your PIN:");
+                String pinInput = scanner.nextLine();
+
+                Account foundAccount = accounts.stream()
+                        .filter(a -> a.getFullName().equals(nameInput)
+                                && a.getPIN().equals(pinInput))
+                        .findFirst()
+                        .orElse(null);
+                if (foundAccount != null) {
+                    System.out.println("Login successful!");
+                } else {
+                    System.out.println("Wrong name or PIN!");
+                }
+            } else if (var.equalsIgnoreCase("Sign up")) {
+
+                System.out.println("Enter your full name:");
+                String fullName = scanner.nextLine();
+
+                if (Account.accountExists(fullName)) {
+                    System.out.println("An account with this name already exists!");
+                    return;
+                }
+
+                System.out.println("Enter your phone number:");
+                String phoneNumber = scanner.nextLine();
+
+                System.out.println("Create a PIN:");
+                String pin = scanner.nextLine();
+                new Account(fullName, phoneNumber, pin);
+
+                System.out.println("Account created successfully!");
+            }
+            else {
                 System.out.println("Wrong Input!");
             }
             System.out.println("Do you want to exit? (yes or no)");
@@ -34,5 +62,6 @@ public class Main {
                 endProgram = true;
             }
         }
+        scanner.close();
     }
 }

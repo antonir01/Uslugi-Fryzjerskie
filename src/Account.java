@@ -13,6 +13,18 @@ public class Account {
         this.PIN = PIN;
         accounts.add(this);
     }
+
+    public static List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getPIN() {
+        return PIN;
+    }
     public static void showAccounts() {
         if (accounts.isEmpty()) {
             System.out.println("No account found.");
@@ -22,4 +34,9 @@ public class Account {
             System.out.println(account.toString());
         }
     }
+    public static boolean accountExists(String fullName) {
+        return accounts.stream()
+                .anyMatch(a -> a.getFullName().equalsIgnoreCase(fullName));
+    }
+
 }
