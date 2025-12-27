@@ -18,4 +18,13 @@ public class Stock {
     public static List<Stock> getStockList() {
         return stockList;
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "name='" + name + '\'' +
+                ", stockType=" + stockType +
+                ", price=" + price +
+                '}';
+    }
 }

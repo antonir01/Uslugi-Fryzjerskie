@@ -8,4 +8,13 @@ public class Service {
         this.price = price;
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "serviceType=" + serviceType +
+                ", price=" + price +
+                ", duration=" + duration +
+                '}';
+    }
 }

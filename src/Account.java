@@ -32,4 +32,12 @@ public class Account {
                 .anyMatch(a -> a.getFullName().equalsIgnoreCase(fullName));
     }
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "fullName='" + fullName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", PIN='" + PIN + '\'' +
+                '}';
+    }
 }

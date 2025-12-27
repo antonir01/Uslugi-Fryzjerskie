@@ -9,4 +9,9 @@ public class Employee extends Account {
     public String getPosition() {
         return position;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
