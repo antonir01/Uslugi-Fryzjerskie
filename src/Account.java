@@ -7,6 +7,7 @@ public class Account {
     String PIN;
 
     private static List<Account> accounts = new ArrayList<>();
+
     public Account(String fullName, String phoneNumber, String PIN) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -25,6 +26,7 @@ public class Account {
     public String getPIN() {
         return PIN;
     }
+
     public static void showAccounts() {
         if (accounts.isEmpty()) {
             System.out.println("No account found.");
@@ -34,6 +36,7 @@ public class Account {
             System.out.println(account.toString());
         }
     }
+
     public static boolean accountExists(String fullName) {
         return accounts.stream()
                 .anyMatch(a -> a.getFullName().equalsIgnoreCase(fullName));

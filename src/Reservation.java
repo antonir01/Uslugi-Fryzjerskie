@@ -10,6 +10,15 @@ public class Reservation {
 
     private static List<Reservation> reservations = new ArrayList<>();
 
+    public static List<Reservation> getAllReservations() {
+        return reservations;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+
     public Reservation(Customer customer, Service service, LocalDate date, PaymentMethod paymentMethod) {
         this.customer = customer;
         this.service = service;
@@ -17,6 +26,7 @@ public class Reservation {
         this.paymentMethod = paymentMethod;
         reservations.add(this);
     }
+
     public static void showReservations() {
         if (reservations.isEmpty()) {
             System.out.println("No reservations found.");
