@@ -1,9 +1,8 @@
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final java.util.Scanner scanner = new java.util.Scanner(System.in);
     private static final List<Account> accounts = Account.getAccounts();
     private static final List<Stock> stockList = Stock.getStockList();
     private static final Service cutting = new Service(ServiceType.CUTTING, 30, 30);
@@ -23,9 +22,9 @@ public class Main {
                 System.out.println("Welcome, " + loggedInAccount.getFullName());
                 if (loggedInAccount instanceof Employee employee) {
                     if (employee.getPosition().equalsIgnoreCase("admin")) {
-                        adminMenu(employee);
+                        adminMenu();
                     } else {
-                        employeeMenu(employee);
+                        employeeMenu();
                     }
                 } else if (loggedInAccount instanceof Customer customer) {
                     customerMenu(customer);
@@ -38,7 +37,6 @@ public class Main {
                 endProgram = true;
             }
         }
-        scanner.close();
     }
 
     private static Account loginOrSignup() {
@@ -85,7 +83,7 @@ public class Main {
         return null;
     }
 
-    private static void adminMenu(Employee admin) {
+    private static void adminMenu() {
         boolean exit = false;
         while (!exit) {
             System.out.println("\n--- ADMIN MENU ---");
@@ -93,20 +91,17 @@ public class Main {
             System.out.println("2. Logout");
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
-                    createEmployee();
-                    break;
-                case "2":
+                case "1" -> createEmployee();
+                case "2" -> {
                     exit = true;
                     System.out.println("Logged out.");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+                }
+                default -> System.out.println("Invalid choice!");
             }
         }
     }
 
-    private static void employeeMenu(Employee employee) {
+    private static void employeeMenu() {
         boolean exit = false;
         while (!exit) {
             System.out.println("\n--- EMPLOYEE MENU ---");
@@ -115,18 +110,13 @@ public class Main {
             System.out.println("3. Logout");
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
-                    Reservation.showReservations();
-                    break;
-                case "2":
-                    manageStock();
-                    break;
-                case "3":
+                case "1" -> Reservation.showReservations();
+                case "2" -> manageStock();
+                case "3" -> {
                     exit = true;
                     System.out.println("Logged out.");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+                }
+                default -> System.out.println("Invalid choice!");
             }
         }
     }
@@ -140,10 +130,8 @@ public class Main {
             System.out.println("3. Logout");
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
-                    makeReservation(customer);
-                    break;
-                case "2":
+                case "1" -> makeReservation(customer);
+                case "2" -> {
                     boolean hasReservations = false;
                     for (Reservation r : Reservation.getAllReservations()) {
                         if (r.getCustomer().equals(customer)) {
@@ -152,13 +140,12 @@ public class Main {
                         }
                     }
                     if (!hasReservations) System.out.println("No reservations found.");
-                    break;
-                case "3":
+                }
+                case "3" -> {
                     exit = true;
                     System.out.println("Logged out.");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+                }
+                default -> System.out.println("Invalid choice!");
             }
         }
     }
@@ -190,11 +177,11 @@ public class Main {
             System.out.println("3. Back");
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
+                case "1" -> {
                     if (stockList.isEmpty()) System.out.println("No stock available.");
                     else stockList.forEach(s -> System.out.println(s.name + " | " + s.stockType + " | $" + s.price));
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     System.out.println("Enter stock name:");
                     String name = scanner.nextLine();
                     StockType type = null;
@@ -211,12 +198,9 @@ public class Main {
                     double price = Double.parseDouble(scanner.nextLine());
                     new Stock(name, type, price);
                     System.out.println("Stock added successfully!");
-                    break;
-                case "3":
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+                }
+                case "3" -> exit = true;
+                default -> System.out.println("Invalid choice!");
             }
         }
     }
