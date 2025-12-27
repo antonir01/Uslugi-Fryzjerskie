@@ -26,20 +26,33 @@ A simple console-based Java application to manage a hair salon. It supports **cu
 ### Admin
 - Create employee accounts.
 - Access all employee functionalities.
-- Manage the salon more broadly.
 
 ---
 
-## Admin Account
+## Default Accounts
 
-The system includes a default **root admin account** created automatically:
+The application starts with **two pre-created accounts** for testing and management.
 
-- **Full Name:** `root`  
-- **Phone Number:** `111 111 111`  
-- **PIN:** `1111`  
+### Admin Account
+- **Full Name:** `root`
+- **Phone Number:** `111 111 111`
+- **PIN:** `1111`
 - **Position:** `admin`
 
-Use this account to log in and create additional employee accounts.
+Use this account to create additional employee accounts.
+
+---
+
+### Employee Account
+- **Full Name:** `employee`
+- **Phone Number:** `222 222 222`
+- **PIN:** `2222`
+- **Position:** `employee`
+
+This account can:
+- View all reservations
+- Manage stock
+- Log out
 
 ---
 
